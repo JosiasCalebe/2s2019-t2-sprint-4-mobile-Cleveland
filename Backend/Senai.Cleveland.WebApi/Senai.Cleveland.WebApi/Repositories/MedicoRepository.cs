@@ -22,6 +22,15 @@ namespace Senai.Cleveland.WebApi.Repositories
             }
         }
 
+        public void Cadastrar(Medicos medico)
+        {
+            using (ClevelandContext ctx = new ClevelandContext())
+            {
+                ctx.Medicos.Add(medico);
+                ctx.SaveChanges();
+            }
+        }
+
         public List<MedicoViewModel> ListarMedicoViewModel()
         {
             List<MedicoViewModel> medicos = new List<MedicoViewModel>();

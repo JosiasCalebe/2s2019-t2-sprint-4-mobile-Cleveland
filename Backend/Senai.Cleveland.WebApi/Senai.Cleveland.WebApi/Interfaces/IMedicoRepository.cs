@@ -10,7 +10,7 @@ namespace Senai.Cleveland.WebApi.Interfaces
     interface IMedicoRepository
     {
         List<Medicos> Listar();
-
+        void Cadastrar(Medicos medico);
         List<MedicoViewModel> ListarMedicoViewModel();
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Senai.Cleveland.WebApi.Domains;
 using Senai.Cleveland.WebApi.Interfaces;
 using Senai.Cleveland.WebApi.Repositories;
 
@@ -37,6 +38,22 @@ namespace Senai.Cleveland.WebApi.Controllers
             catch (Exception ex)
             {
                 return BadRequest(new { mensagem = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult Cadastrar(Medicos medico)
+        {
+            try
+            {
+                MedicoRepository.Cadastrar(medico);
+                return Ok(medico);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
         }
     }
